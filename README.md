@@ -1,5 +1,3 @@
-![CodeQL scan](https://github.com/jedisct1/minisign/workflows/CodeQL%20scan/badge.svg)
-
 Minisign
 ========
 
@@ -8,71 +6,16 @@ Minisign is a dead simple tool to sign files and verify signatures.
 For more information, please refer to the
 [Minisign documentation](https://jedisct1.github.io/minisign/)
 
-Tarballs and pre-compiled binaries can be verified with the following
-public key:
+**This fork has replaced cmake/zig with a Makefile**
 
-    RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3
+Compilation
+-----------
 
-Compilation / installation
---------------------------
+`$ make bin/minisign`
 
-## Using [Zig](https://ziglang.org):
+and/or
 
-Dependencies:
-
-* [libsodium](https://libsodium.org/)
-
-Compilation:
-
-    $ zig build -Drelease
-
-## Using cmake and gcc or clang:
-
-* [libsodium](https://libsodium.org/)
-* cmake
-* pkg-config
-* gcc or clang
-
-Compilation:
-
-    $ mkdir build
-    $ cd build
-    $ cmake ..
-    $ make
-    # make install
-
-Alternative configuration for static binaries:
-
-    $ cmake -D STATIC_LIBSODIUM=1 ..
-
-or:
-
-    $ cmake -D BUILD_STATIC_EXECUTABLES=1 ..
-
-Minisign is also available in Homebrew:
-
-    $ brew install minisign
-
-Minisign is also available in Scoop on Windows:
-
-    $ scoop install minisign
-
-Minisign is also available in chocolatey on Windows:
-
-    $ choco install minisign
-
-Minisign is also available with docker:
-
-    $ docker run -i --rm jedisct1/minisign
-
-The image can be verified with the following cosign public key:
-
-```text
------BEGIN PUBLIC KEY-----
-MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAExjZWrlc6c58W7ZzmQnx6mugty99C
-OQTDtJeciX9LF9hEbs1J1fzZHRdRhV4OTqcq0jTW9PXnrSSZlk1fbkE/5w==
------END PUBLIC KEY-----
-```
+`$ make bin/miniverify`
 
 Additional tools, libraries and implementations
 -----------------------------------------------
