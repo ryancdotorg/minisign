@@ -24,3 +24,5 @@ cmake_install.cmake
 minisign
 zig-cache
 zig-out
+bin
+obj
