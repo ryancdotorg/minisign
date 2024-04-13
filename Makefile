@@ -45,7 +45,7 @@ obj/miniverify_multicall.o: $(OBJ_COMMON) obj/miniverify_main.o obj/get_line_ver
 
 obj/minisign_main.o: src/minisign.c src/minisign.h
 	@mkdir -p $(@D)
-	$(COMPILE) -DMINISIGN_MAIN=minisign_main -DVERIFY_ONLY -c $< -o $@
+	$(COMPILE) -DMINISIGN_MAIN=minisign_main -c $< -o $@
 
 obj/minisign_multicall.o: $(OBJ_COMMON) obj/minisign_main.o obj/get_line.o
 	@mkdir -p $(@D)
