@@ -25,6 +25,8 @@ OBJ_FULL   = $(OBJ_COMMON) $(patsubst %,obj/%.o,get_line minisign)
 
 .PHONY: all clean _clean _nop
 
+all: bin/minisign
+
 bin/minisign: $(OBJ_FULL)
 	@mkdir -p $(@D)
 	$(COMPILE) $^ $(LDFLAGS) -o $@
@@ -32,6 +34,22 @@ bin/minisign: $(OBJ_FULL)
 bin/miniverify: $(OBJ_VERIFY)
 	@mkdir -p $(@D)
 	$(COMPILE) $^ $(LDFLAGS) -o $@
+
+obj/miniverify_main.o: src/minisign.c src/minisign.h
+	@mkdir -p $(@D)
+	$(COMPILE) -DMINISIGN_MAIN=miniverify_main -DVERIFY_ONLY -c $< -o $@
+
+obj/miniverify_multicall.o: $(OBJ_COMMON) obj/miniverify_main.o obj/get_line_verify.o
+	@mkdir -p $(@D)
+	$(COMPILE) -r $^ -o $@
+
+obj/minisign_main.o: src/minisign.c src/minisign.h
+	@mkdir -p $(@D)
+	$(COMPILE) -DMINISIGN_MAIN=minisign_main -DVERIFY_ONLY -c $< -o $@
+
+obj/minisign_multicall.o: $(OBJ_COMMON) obj/minisign_main.o obj/get_line.o
+	@mkdir -p $(@D)
+	$(COMPILE) -r $^ -o $@
 
 obj/%_verify.o: src/%.c src/%.h
 	@mkdir -p $(@D)

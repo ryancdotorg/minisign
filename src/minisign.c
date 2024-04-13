@@ -824,8 +824,12 @@ sig_default_skfile(void)
 }
 #endif
 
+#ifndef MINISIGN_MAIN
+#define MINISIGN_MAIN main
+#endif
+
 int
-main(int argc, char **argv)
+MINISIGN_MAIN(int argc, char **argv)
 {
     const char *pk_file = NULL;
 #ifndef VERIFY_ONLY
