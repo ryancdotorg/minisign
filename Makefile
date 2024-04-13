@@ -41,7 +41,7 @@ obj/miniverify_main.o: src/minisign.c src/minisign.h
 
 obj/miniverify_multicall.o: $(OBJ_COMMON) obj/miniverify_main.o obj/get_line_verify.o
 	@mkdir -p $(@D)
-	$(COMPILE) -r $^ -o $@
+	$(COMPILE) --entry miniverify_main -r $^ -o $@
 
 obj/minisign_main.o: src/minisign.c src/minisign.h
 	@mkdir -p $(@D)
@@ -49,7 +49,7 @@ obj/minisign_main.o: src/minisign.c src/minisign.h
 
 obj/minisign_multicall.o: $(OBJ_COMMON) obj/minisign_main.o obj/get_line.o
 	@mkdir -p $(@D)
-	$(COMPILE) -r $^ -o $@
+	$(COMPILE) --entry minisign_main -r $^ -o $@
 
 obj/%_verify.o: src/%.c src/%.h
 	@mkdir -p $(@D)
